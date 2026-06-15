@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class Employee {
 
 	public static void main(String[] args) {
-		final String  url ="jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
+	final String  url ="jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
 		
 		try {
 			
