@@ -36,6 +36,7 @@ public class PreparedStatement2 {
 			
 			con.close();
 			ps.close();
+			sc.close();
 			
 			
 			
