@@ -31,6 +31,8 @@ public class Calculator extends GenericServlet {
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
+	    try {
+	    
 	    int A = Integer.parseInt(request.getParameter("Aval"));
 	    int B = Integer.parseInt(request.getParameter("Bval"));
 	    
@@ -64,6 +66,12 @@ public class Calculator extends GenericServlet {
 	    	
 	    	default:System.out.println("Invalid");break;
 	    	
+	    }
+	    }catch(Exception e) {
+	    	   out.println("<h1>"+e.getMessage()+"</h1>");
+	    }
+	    finally {
+	    	 out.println("<a href ='Calculator.html'>Go Back</a>");
 	    }
 	}
 
