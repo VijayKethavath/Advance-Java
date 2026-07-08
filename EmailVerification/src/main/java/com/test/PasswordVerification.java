@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -35,6 +35,8 @@ public class PasswordVerification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String password = request.getParameter("password");
+		HttpSession session= request.getSession();
+		session.setAttribute("p", password);
 		
 		String URL = "jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
 		String querry = "select * from email where password=?";
@@ -49,6 +51,10 @@ public class PasswordVerification extends HttpServlet {
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
+				 String e = (String) session.getAttribute("e");
+				 String p = (String) session.getAttribute("p");
+				 
+				 response.getWriter().println("<h3> Welcome "+ e +" : " + p +"</h3>");
 				 RequestDispatcher rd  = request.getRequestDispatcher("Second.html");
 				 rd.include(request,response);	
 			}

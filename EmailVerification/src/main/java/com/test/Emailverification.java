@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +35,9 @@ public class Emailverification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	 response.setContentType("text/html");
 	 String email = request.getParameter("email");
+	 HttpSession session = request.getSession();
+	 session.setAttribute("e", email);
+	 
 	 
 	 final String URL = "jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
 	 
