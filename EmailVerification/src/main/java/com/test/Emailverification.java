@@ -35,12 +35,13 @@ public class Emailverification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	 response.setContentType("text/html");
 	 String email = request.getParameter("email");
+	 
 	 HttpSession session = request.getSession();
 	 session.setAttribute("e", email);
+	 session.setMaxInactiveInterval(30);
 	 
 	 
 	 final String URL = "jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
-	 
 	 String querry = "select * from email where email=?";
 	 
 	 try {
@@ -48,10 +49,8 @@ public class Emailverification extends HttpServlet {
 		 Class.forName("com.mysql.cj.jdbc.Driver");
 		 
 		 Connection con = DriverManager.getConnection(URL);
-		 
 		 PreparedStatement ps = con.prepareStatement(querry);
 		 ps.setString(1, email);
-		 
 		 ResultSet rs = ps.executeQuery();
 		 
 		 if(rs.next()) {

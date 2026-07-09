@@ -35,8 +35,10 @@ public class PasswordVerification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String password = request.getParameter("password");
+		
 		HttpSession session= request.getSession();
 		session.setAttribute("p", password);
+		session.setMaxInactiveInterval(30);
 		
 		String URL = "jdbc:mysql://localhost:3306/jdbc?user=root&password=152210";
 		String querry = "select * from email where password=?";
