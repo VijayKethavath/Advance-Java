@@ -50,6 +50,30 @@ try{
 	e.getMessage();
 }
 %>
+<br><br>
+<h4>Fill the Details to update </h4>
+<form action="UpdateSave.jsp" method = "post">
+
+<label> id:</label>
+<input type = "text" name = "id" value = "<%= id %>" readonly><br><br>
+
+<label>User id:</label>
+<input type = "number" name = "userid" required><br><br>
+
+<label>First Name:</label>
+<input type = "text" name = "fname" required><br><br>
+
+<label>Last Name:</label>
+<input type = "text" name = "lname" required><br><br>
+
+<label>Age:</label>
+<input type = "text" name = "age" required><br><br>
+
+<label>City:</label>
+<input type = "text" name = "city" required><br><br>
+
+<input type = "submit" value = "submit">
+</form>
 
 
 </body>
